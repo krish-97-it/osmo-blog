@@ -1,0 +1,55 @@
+@osmo-button-shadow-width: 4px;
+@osmo-button-hover-transition-time: 150ms;
+@osmo-button-click-transition-time: 100ms;
+@osmo-button-grow-scale: 1.05;
+@osmo-button-border-width: 1px;
+@osmo-button-x: @osmo-t-x-height;
+@osmo-button-padding-top-bottom: @osmo-button-x;
+@osmo-button-padding-sides: 2 * @osmo-button-x;
+
+#osmo-button {
+	.on-click(@css) {
+		&:not([data-disabled="true"]) {
+			&:active {
+				@css();
+			}
+		}
+	}
+	.on-hover(@css) {
+		&:not([data-disabled="true"]) {
+			&:hover {
+				@css();
+			}
+		}
+	}
+
+	.primary(@foreground, @background, @shadow) {
+		.osmo-button-inner {
+			background-color: @foreground;
+			.text-and-svg-colour(@background);
+		}
+
+		&::before {
+			background-color: @shadow;
+		}
+	}
+
+	.secondary(@foreground, @background) {
+		.osmo-button-inner {
+			background-color: @background;
+			.text-and-svg-colour(@foreground);
+			border: @osmo-button-border-width solid @foreground;
+			padding: calc(@osmo-button-padding-top-bottom - @osmo-button-border-width)
+					calc(@osmo-button-padding-sides - @osmo-button-border-width);
+		}
+
+		&::before {
+			background-color: @foreground;
+		}
+	}
+
+	.white-primary(@text) {
+		.primary(#fff, @text, #e1e1e1);
+	}
+
+}

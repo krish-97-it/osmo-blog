@@ -1,0 +1,90 @@
+.single-post-block {
+  /* Todo : put into a mixin */
+  background-color: @osmo-white;
+  border-radius: 15px;
+  .padding-sides(30px);
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  @media (max-width: @screen-sm-max) {
+    border-radius: 0;
+    .padding-sides(0);
+  }
+
+  &__container {
+    @media (max-width: @screen-sm-max) and (min-width: @screen-sm-min) {
+      .container-sm();
+    }
+
+    @media (max-width: @screen-xs-max) {
+      .container-xs();
+    }
+  }
+
+  &__infos {
+    color: #817f81;
+  }
+
+  &__category{
+    color: #FF8A33;
+  }
+
+  &__img {
+    display: none;
+  }
+
+  &__body {
+    margin-top: 48px;
+  }
+
+  &__tags {
+    margin-top: 2em;
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+
+  &__tag.osmo-button .osmo-button-inner {
+    background-color: @osmo-white;
+    color: @osmo-orange;
+    border: 1px solid @osmo-orange;
+  }
+
+  &__tag {
+    margin: 5px;
+  }
+}
+
+/**
+ * Style for HTML from wysiwyg
+ **/
+.single-post-block__body {
+  img {
+    max-width: 100%;
+    margin: 1em 0;
+    &.sfcm.sfsi_wicon { // Style for share icons (plugin)
+      margin: 0;
+    }
+  }
+
+  li {
+    font-size: 18px;
+  }
+
+  li + li {
+    margin-top: 1em;
+  }
+
+  a {
+    color: @osmo-orange;
+    text-decoration: underline;
+  }
+
+  :first-child.wp-block-image > img {
+    margin-top: 0;
+  }
+
+  p + h4 {
+    margin-top: 48px;
+    margin-bottom: 20px;
+  }
+}

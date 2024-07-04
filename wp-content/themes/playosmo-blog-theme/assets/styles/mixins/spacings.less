@@ -1,0 +1,27 @@
+.padding-sides(@style) {
+  padding-left: @style;
+  padding-right: @style;
+}
+
+.padding-top-bottom(@style) {
+  padding-top: @style;
+  padding-bottom: @style;
+}
+
+.margin-sides(@style) {
+  margin-left: @style;
+  margin-right: @style;
+}
+
+.margin-top-bottom(@style) {
+	margin-top: @style;
+	margin-bottom: @style;
+}
+
+.column-spacing(@spacing) {
+  .margin-sides(-@spacing / 2);
+
+  > .osmo-col {
+    .padding-sides(@spacing / 2);
+  }
+}

@@ -1,0 +1,35 @@
+{% extends 'sidebar-block.twig' %}
+
+{% block content %}
+  <div class="newsletter">
+    <h4 class="sidebar-block__title">{{pll__('Sign up for our newsletter!')}}</h4>
+    <p class="newsletter__description">
+      {{pll__('Stay up-to-date with Osmo and also receive special deals and offers!')}}
+    </p>
+    <form method="post" class="newsletter__form" action-xhr="https://www.playosmo.com/api/v2/newsletter/subscribe/discount" target="_top">
+      {% include 'input.twig' with
+        {
+          'class': 'newsletter__input',
+          'type': 'text',
+          'id': 'email',
+          'name': 'email',
+          'placeholder': pll__('Enter&nbsp;your&nbsp;email`'),
+          'required': true
+        }
+      %}
+      <input hidden type="text" name="current_country" value="{{ function('get_locale') }}" placeholder="{{ function('get_locale') }}">
+      <input hidden type="text" name="referrer" value="blog.playosmo_sidebar">
+
+      <div class="newsletter__btn" data-align="center">
+        <button class="osmo-button" data-button="buy">
+          <span class="osmo-button-inner">
+            <span class="osmo-t">{{pll__('Sign Up')}}</span>
+          </span>
+        </button>
+      </div>
+      {# Note for now, we don't use error message. #}
+      <div class="newsletter__validation" submit-success>{{pll__('Thank you for signing up for updates from Osmo!')}}</div>
+      <div class="newsletter__validation" submit-error>{{pll__('Thank you for signing up for updates from Osmo!')}}</div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+.tease-post {
+  background-color: @osmo-white;
+  border-radius: 15px;
+  .padding-sides(30px);
+  padding-top: 30px;
+  padding-bottom: 60px;
+
+  @media (max-width: @screen-sm-max) {
+    border-radius: 0;
+    .padding-sides(0);
+  }
+
+  &__container {
+    @media (max-width: @screen-sm-max) and (min-width: @screen-sm-min) {
+      .container-sm();
+    }
+
+    @media (max-width: @screen-xs-max) {
+      .container-xs();
+    }
+  }
+
+  &__infos {
+    color: #817f81;
+  }
+
+  &__category{
+    color: #FF8A33;
+  }
+
+  &__text {
+    margin-top: 1.5em;
+  }
+
+  &__img {
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    text-align: center;
+    margin-top: 2em;
+  }
+}
+
+.tease-post + .tease-post {
+  margin-top: 20px;
+}

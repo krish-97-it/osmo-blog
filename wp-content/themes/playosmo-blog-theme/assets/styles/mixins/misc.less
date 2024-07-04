@@ -1,0 +1,41 @@
+.all-link-states(@css) {
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		@css();
+	}
+}
+
+.antialiased-text() {
+	-webkit-font-smoothing: antialiased;
+}
+
+.text-and-svg-colour(@colour) {
+	color: @colour;
+
+	.svg-path-property({
+		fill: @colour;
+	});
+}
+
+.svg-path-property(@css) {
+	path {
+		@css();
+	}
+}
+
+.active-link-states(@css) {
+	&:active,
+	&:focus,
+	&:hover {
+		@css();
+	}
+}
+
+.inactive-link-states(@css) {
+	&:not(:active):not(:focus):not(:hover) {
+		@css();
+	}
+}

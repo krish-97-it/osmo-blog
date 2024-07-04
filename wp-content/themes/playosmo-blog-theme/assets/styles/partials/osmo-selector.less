@@ -1,0 +1,117 @@
+@osmo-selector-item-height: 1.9em;
+
+.osmo-selector {
+  position: relative;
+  text-align: left;
+  user-select: none;
+
+  @border-thickness: 1px;
+  @border-colour: #eee;
+  @border-radius: 8px;
+  @background-colour: #fff;
+  @padding-sides: 8px;
+
+  .osmo-selector-control {
+    position: relative;
+    border: @border-thickness solid @border-colour;
+    background: @background-colour;
+    border-radius: @border-radius;
+    &[data-open='true'] {
+      border-radius: @border-radius @border-radius 0 0;
+    }
+    &.osmo-selector-control--borderless {
+      border: none;
+    }
+    cursor: default;
+
+    @arrow-width: 7px;
+    @arrow-height: 6px;
+    @arrow-gap: 3px;
+    @arrow-margin: 4px;
+
+    padding-left: @padding-sides;
+    padding-right: @padding-sides + @arrow-width + @arrow-margin;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: @arrow-width;
+      height: @arrow-height;
+      border-left: ceil(@arrow-width / 2) solid transparent;
+      border-right: ceil(@arrow-width / 2) solid transparent;
+      position: absolute;
+      right: @arrow-margin;
+      margin: auto 0;
+      pointer-events: none;
+    }
+
+    &::before {
+      top: 0;
+      bottom: (@arrow-height + @arrow-gap);
+      border-bottom: @arrow-height solid;
+    }
+    &::after {
+      top: (@arrow-height + @arrow-gap);
+      bottom: 0;
+      border-top: @arrow-height solid;
+    }
+  }
+
+  .osmo-selector-container {
+    display: none;
+  }
+
+  .osmo-selector-container-visible {
+    display: block;
+  }
+
+  @dropdown-z-index: 1000;
+
+  .osmo-selector-pagecover {
+    z-index: @dropdown-z-index - 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .osmo-selector-dropdown-outer {
+    position: absolute;
+    z-index: @dropdown-z-index;
+    left: 0;
+    bottom: @border-thickness;
+    height: 0;
+    &[data-width='free'] {
+      min-width: 100%;
+      white-space: nowrap;
+    }
+    &:not([data-width='free']) {
+      right: 0;
+    }
+  }
+
+  .osmo-selector-dropdown {
+    max-height: @osmo-selector-item-height * 8;
+    overflow: auto;
+
+    border: 1px solid @border-colour;
+    background: @background-colour;
+    border-radius: 0 0 @border-radius @border-radius;
+    padding: 0 @padding-sides;
+  }
+
+  .osmo-selector-selectable {
+    cursor: pointer;
+
+    &:hover {
+      color: #1b74ba;
+    }
+  }
+
+  .osmo-countryselector-item {
+    font-size: 18px;
+    line-height: 1.9;
+  }
+}

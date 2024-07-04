@@ -1,0 +1,27 @@
+<div class="tease-post">
+  <div class="tease-post__container">
+    <h2 class="tease-post__title">
+      <a class="tease-post__link" href="{{post.link}}" itemprop="name">{{post.title}}</a>
+    </h2>
+    <div class="tease-post__infos">
+      {{post.post_date|date(pll__('F j, Y'))}}
+      {# Temporary disable categories for all except english #}
+      {% if lang == 'en' %}
+        / <a class="tease-post__category" href="{{post.category.link}}">{{post.category}}</a>
+      {% endif %}
+    </div>
+    {% if post.thumbnail.src %}
+      <img class="tease-post__img" src="{{post.thumbnail.src}}" alt=""/>
+    {% elseif post.img_from_wysiwyg %}
+      <img class="tease-post__img" src="{{post.img_from_wysiwyg}}" alt=""/>
+    {% endif %}
+    <p class="tease-post__text">{{post.preview.read_more(false)}}</p>
+    <div class="tease-post__btn">
+      <a class="tease-post__link osmo-button" data-button="buy" href="{{post.link}}">
+        <span class="osmo-button-inner">
+          <span class="osmo-t">{{pll__('Continue Reading')}}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

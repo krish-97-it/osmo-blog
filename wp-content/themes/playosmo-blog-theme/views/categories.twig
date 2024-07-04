@@ -1,0 +1,20 @@
+<section class="categories">
+  <div class="container">
+    <div class="osmo-row" data-spacing="large">
+      <a class="categories__category osmo-col {% if selected_category.cat_ID is not defined %} categories__category--active{% endif %}" href="{{ site.home_url }}">
+        <div class="categories__image-container">
+          <img class="categories__image" src="{{theme.link}}/assets/images/icon-all-posts.png" alt=""/>
+        </div>
+        <div class="categories__name">All Posts</div>
+      </a>
+      {% for category in categories %}
+        <a class="categories__category osmo-col{% if selected_category.cat_ID == category.id %} categories__category--active{% endif %}" href="{{ category.link }}">
+          <div class="categories__image-container">
+            <img class="categories__image" src="{{ Image(category.meta('image')).src }}" alt=""/>
+          </div>
+          <div class="categories__name">{{ category.name }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+{% extends 'sidebar-block.twig' %}
+
+{% block content %}
+  <div class="featured-posts">
+    <h4 class="sidebar-block__title">{{pll__('Recommended Posts')}}</h4>
+    <div class="featured-posts__buttons">
+      <div [class]="featuresLatest ? 'osmo-button featured-posts__button featured-posts__button--disabled' : 'osmo-button featured-posts__button'" class="osmo-button featured-posts__button" on="tap:AMP.setState({featuresLatest: false})" data-button="buy" data-id="popular" role="button" tabindex="0">
+        <span class="osmo-button-inner">
+          <span class="osmo-t">{{pll__('Most Popular')}}</span>
+        </span>
+      </div>
+      <div [class]="featuresLatest ? 'osmo-button featured-posts__button' : 'osmo-button featured-posts__button featured-posts__button--disabled'" class="osmo-button featured-posts__button featured-posts__button--disabled" on="tap:AMP.setState({featuresLatest: true})" data-button="buy" data-id="latest" role="button" tabindex="1">
+        <span class="osmo-button-inner">
+          <span class="osmo-t">{{pll__('Latest')}}</span>
+        </span>
+      </div>
+		</div>
+    <div [class]="featuresLatest ? 'featured-posts__posts featured-posts__posts--disabled' : 'featured-posts__posts'" class="featured-posts__posts" data-id="popular">
+      {% for post in popular_posts %}
+        <a class="featured-posts__post" href="{{ post.link }}">
+          <div class="featured-posts__title">{{ post.title }}</div>
+          <div class="featured-posts__date">
+            {{ post.post_date|date(pll__('F j, Y')) }}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div [class]="featuresLatest ? 'featured-posts__posts' : 'featured-posts__posts featured-posts__posts--disabled'" class="featured-posts__posts featured-posts__posts--disabled" data-id="latest">
+      {% for post in latest_posts %}
+        <a class="featured-posts__post" href="{{ post.link }}">
+          <div class="featured-posts__title">{{ post.title }}</div>
+          <div class="featured-posts__date">
+            {{ post.post_date|date(pll__('F j, Y')) }}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

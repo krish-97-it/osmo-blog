@@ -1,0 +1,42 @@
+<header class="header">
+  {% block header %}
+    <div class="header-nav">
+      <div class="container">
+        <div class="header-nav__inner-container">
+          <a class="header-nav__logo"
+            {% if function('get_locale') == 'fr_FR' %}
+              href="{{site.home_url}}/fr">
+            {% elseif function('get_locale') == 'de_DE' %}
+              href="{{site.home_url}}/de">
+            {% else %}
+              href="{{site.home_url}}">
+            {% endif %}
+              <img class="header-nav__img" src="{{theme.link}}/assets/images/osmo-white.png" alt="Osmo" />
+            </a>
+          <a class="header-nav__button osmo-button" data-button="buy" href="https://www.playosmo.com/--/shopping/">
+            <span class="osmo-button-inner">
+              <span class="osmo-t">{{pll__('Shop')}} <span class="hidden-xs">{{pll__('Now')}}</span></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div [class]="mobileMenuIsActive ? 'header-filters header-filters--active' : 'header-filters'" class="header-filters" on="tap:AMP.setState({mobileMenuIsActive: !mobileMenuIsActive})" role="button" tabindex="0">
+      <div class="container">
+        <div class="header-filters__trigger">
+          <div class="header-filters__current-cat">
+            {% if selected_category.cat_ID is not defined %}
+              {{pll__('All Posts')}}
+            {% else %}
+              {{selected_category.name}}
+            {% endif %}
+          </div>
+        </div>
+        <div class="header-filters__dropdown">
+          {% include 'search-form.twig' %}
+          {% include 'categories.twig' %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+</header>

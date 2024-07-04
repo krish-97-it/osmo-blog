@@ -1,0 +1,14 @@
+<form method="get" role="search" action="{{ site.url }}">
+  <div class="search-form__container">
+    {% include 'input.twig' with
+      {
+        'class': 'search-form__input',
+        'type': 'text',
+        'name': 's',
+        'placeholder': 'What&nbsp;are&nbsp;you&nbsp;looking&nbsp;for&nbsp;?'
+      }
+    %}
+    <button class="search-form__button"></button>
+  </div>
+  <input type="hidden" name="post_type" value="post">
+</form>

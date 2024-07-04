@@ -1,0 +1,45 @@
+.featured-products {
+
+  &__product {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__product + &__product {
+    margin-top: 1.5em;
+  }
+
+  &__col {
+    width: 50%;
+    max-width: 150px;
+  }
+
+  &__col:first-child {
+    padding-right: 25px;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__title,
+  &__link {
+    font-size: 18px;
+  }
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__link {
+    margin-top: 0.25em;
+    display: block;
+    color: @osmo-orange;
+  }
+
+  &__link:hover {
+    color: @osmo-orange;
+    text-decoration: underline;
+  }
+}

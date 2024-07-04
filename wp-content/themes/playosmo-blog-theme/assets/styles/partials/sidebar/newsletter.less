@@ -1,0 +1,57 @@
+.newsletter {
+  &__description {
+    margin-bottom: 1em;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .osmo-button {
+    margin-top: 1em;
+    padding: 0;
+    border: 0;
+  }
+
+  .osmo-button:after {
+    content: '';
+    display: none;
+    background-image: url('../../assets/images/loading.gif');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__error {
+    margin-top: 1em;
+    display: none;
+    color: @osmo-red;
+  }
+
+  &__validation {
+    font-size: 1.8rem;
+    margin-top: 1em;
+  }
+
+  &__validation,
+  &--submitted &__input,
+  &--submitted &__btn {
+    display: none;
+  }
+
+  &--loading .osmo-button:after,
+  &__error--active,
+  &--submitted &__validation {
+    display: block;
+  }
+
+  &--loading .osmo-button .osmo-t {
+    visibility: hidden;
+  }
+}

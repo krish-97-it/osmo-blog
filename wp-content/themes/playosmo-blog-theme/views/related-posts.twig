@@ -1,0 +1,22 @@
+<div class="related-posts">
+  <div class="related-posts__container">
+    <h4 class="related-posts__header">{{pll__('Related Posts')}}</h4>
+    <div class="osmo-row">
+      {% for post in post.meta('related_posts') %}
+        <div class="osmo-col">
+          <a href="{{post.obj.link}}" class="related-posts__post">
+            {% if post.obj.thumbnail.src %}
+              <img class="related-posts__img" src="{{post.obj.thumbnail.src}}" alt=""/>
+            {% endif %}
+            <div class="related-posts__content">
+              <div class="related-posts__title">{{post.obj.title}}</div>
+              <div class="related-posts__date">
+                {{post.obj.post_date|date(pll__('F j, Y'))}}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
