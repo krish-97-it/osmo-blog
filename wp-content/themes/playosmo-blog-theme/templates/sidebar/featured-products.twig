@@ -1,0 +1,20 @@
+{% extends 'sidebar-block.twig' %}
+
+{% block content %}
+  <div class="featured-products">
+    <h4 class="sidebar-block__title">{{pll__('Featured Products')}}</h4>
+    <div class="featured-products__products">
+      {% for product in options.products %}
+          <div class="featured-products__product">
+            <div class="featured-products__col">
+              <img class="featured-products__img" src="{{ Image(product.image).src }}" />
+            </div>
+            <div class="featured-products__col">
+              <div class="featured-products__title">{{ product.title }}</div>
+              <a class="featured-products__link" href="{{ product.link_to.url }}" target="_blank">{{pll__('Learn More')}} ></a>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

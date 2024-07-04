@@ -1,0 +1,18 @@
+{% extends 'sidebar-block.twig' %}
+
+{% block content %}
+  <div class="products-by-learning-category">
+    <h4 class="sidebar-block__title">Products by Learning Category</h4>
+    <div class="products-by-learning-category__categories">
+      {% for category in options.learning_categories %}
+        <a class="products-by-learning-category__category" href="{{ category.link_to.url }}">
+          <div class="products-by-learning-category__container">
+            <img class="products-by-learning-category__icon" src="{{ Image(category.icon).src }}" />
+            <img class="products-by-learning-category__icon products-by-learning-category__icon--active" src="{{ Image(category.icon_active).src }}" />
+            <div class="products-by-learning-category__name">{{ category.title }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

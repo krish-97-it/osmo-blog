@@ -1,0 +1,30 @@
+<div [class]="showLangModal ? 'modal modal--visible' : 'modal'" class="modal">
+  <div class="modal__background" on="tap:AMP.setState({showLangModal: false})" tabindex="0" role="switchk"></div>
+  <div class="modal__container">
+    <div class="modal__block">
+      <div class="modal__title">{{pll__('Select a language')}}</div>
+      <div class="modal__input">
+        <p>{{pll__('Select website language')}}</p>
+        <div class="osmo-selector">
+        <div class="osmo-selector-control" on="tap:AMP.setState({showLangDropdown: !showLangDropdown})" tabindex="0" role="listbox">
+          <div class='osmo-countryselector-item'>
+            {{lang_name}}
+          </div>
+        </div>
+        <div [class]="showLangDropdown ? 'osmo-selector-container osmo-selector-container-visible' : 'osmo-selector-container'" class="osmo-selector-container">
+          <div class='osmo-selector-pagecover' on="tap:AMP.setState({showLangDropdown: false})" tabindex="1" role="option"></div>
+          <div class='osmo-selector-dropdown-outer'>
+            <div class='osmo-selector-dropdown'>
+              {% for _lang in langs %}
+                <div class='osmo-countryselector-item osmo-selector-selectable' on="tap:AMP.navigateTo(url='{{_lang.url}}'),AMP.setState({showLangDropdown: false, showLangModal: false})" role="button" tabindex="0">
+                  {{ _lang.name }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='modal__close' on="tap:AMP.setState({showLangModal: false})" tabindex="0" role="button"></div>
+    </div>
+  </div>
+</div>

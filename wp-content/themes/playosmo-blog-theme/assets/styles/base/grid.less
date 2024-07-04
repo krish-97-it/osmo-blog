@@ -1,0 +1,152 @@
+/**
+ * Container
+ **/
+
+.container() {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  @media (min-width: 768px) {
+    width: 720px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+}
+
+.container-sm() {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  width: 720px;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.container-xs() {
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+}
+
+.container {
+  .container();
+}
+
+/**
+ * Grid
+ **/
+
+.osmo-row {
+  display: flex;
+  flex-wrap: wrap;
+
+  .column-spacing(@spacing) {
+    .margin-sides(-@spacing / 2);
+
+    > .osmo-col {
+      .padding-sides(@spacing / 2);
+    }
+  }
+
+  .column-spacing(@column-spacing);
+
+  &[data-wrap="no-wrap"] {
+    flex-wrap: nowrap;
+  }
+
+  &[data-spacing="very-tight"] {
+    .column-spacing(@column-very-tight-spacing);
+  }
+
+  &[data-spacing="tight"] {
+    .column-spacing(@column-tight-spacing);
+  }
+
+  &[data-spacing="medium"] {
+    .column-spacing(@column-medium-spacing);
+  }
+
+  &[data-spacing="large"] {
+    .column-spacing(@column-large-spacing);
+  }
+
+  &[data-align="space-around"],
+  &[data-justify="space-around"] {
+    justify-content: space-around;
+  }
+  &[data-align="space-between"],
+  &[data-justify="space-between"] {
+    justify-content: space-between;
+  }
+  &[data-align="space-evenly"],
+  &[data-justify="space-evenly"] {
+    justify-content: space-evenly;
+
+    /* space-around is not supported yet by Safari and IE */
+    /* https://developer.apple.com/safari/technology-preview/release-notes/ */
+    /* https://github.com/Fyrd/caniuse/issues/3582 */
+    html.safari-browser &,
+    html.ieedge-browser & {
+      justify-content: center;
+    }
+  }
+
+  &[data-align="centre"],
+  &[data-align="center"] {
+    justify-content: center;
+  }
+
+  &[data-v-align="middle"] {
+    align-items: center;
+  }
+
+  &[data-v-align="full"] {
+    align-items: stretch;
+  }
+
+  &[data-v-align="top"] {
+    align-items: flex-start;
+  }
+
+  &[data-v-align="bottom"] {
+    align-items: flex-end;
+  }
+
+  &[data-direction="down"] {
+    flex-direction: column;
+  }
+
+  &[data-reverse="true"] {
+    flex-direction: row-reverse;
+  }
+}

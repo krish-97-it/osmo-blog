@@ -1,0 +1,9 @@
+{% extends 'sidebar-block.twig' %}
+{% set class = 'search-sidebar' %}
+
+{% block content %}
+  <div class="search-sidebar__container">
+    <h4 class="sidebar-block__title">{{pll__('Search')}}</h4>
+    {% include 'search-form.twig' %}
+  </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+  <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+    <section class="single-post-block">
+      <div class="single-post-block__container">
+        <h1 class="single-post-block__title">{{ post.title }}</h1>
+        <div class="single-post-block__infos">
+          {{post.post_date|date(pll__('F j, Y'))}} / <a class="single-post-block__category" href="{{post.category.link}}">{{post.category}}</a>
+        </div>
+        {% if post.thumbnail.src %}
+          <img class="single-post-block__img" src="{{post.thumbnail.src}}" alt=""/>
+        {% endif %}
+        <div class="single-post-block__body">
+          {{post.content}}
+        </div>
+        {% if post.terms('tags') %}
+          <div class="single-post-block__tags">
+            {% for term in post.terms('tags') %}
+              <a class="single-post-block__tag osmo-button" data-button="buy" href="{{term.link}}">
+                <span class="osmo-button-inner" data-padding="tight">
+                  <span class="osmo-t">{{term.name}}</span>
+                </span>
+              </a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </section>
+    {% if post.meta('related_posts') %}
+      {% include 'related-posts.twig' %}
+    {% endif %}
+  </article>
+{% endblock %}

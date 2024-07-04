@@ -1,0 +1,25 @@
+.pagination {
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  margin-top: 2.5em;
+
+  @media (max-width: @screen-xs-max) {
+    margin-top: 1.6em;
+  }
+
+  .current {
+    color: #ea3729;
+  }
+
+  .page,
+  .current,
+  .nextpostslink,
+  .previouspostslink {
+    margin: 0 0.5em;
+  }
+
+  a:hover {
+    color: @osmo-orange;
+  }
+}

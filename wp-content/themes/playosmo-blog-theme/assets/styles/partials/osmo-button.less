@@ -1,0 +1,83 @@
+@import './osmo-button-defs';
+
+.osmo-button {
+	display: inline-block;
+	vertical-align: baseline;
+	position: relative;
+	z-index: 0;
+	font-size: 15px; /* different from playOsmo */
+
+	@x: @osmo-t-x-height;
+	@basic-min-height: 3 * @x;
+	@border-radius: 2 * @x; /* different from playOsmo */
+
+	border-radius: @border-radius;
+
+	.all-link-states({
+		text-decoration: none;
+	});
+
+	> .osmo-button-inner {
+		display: block;
+		position: relative;
+		z-index: 0;
+
+		padding: @osmo-button-padding-top-bottom @osmo-button-padding-sides;
+
+		&[data-padding="tight"] {
+			.padding-sides(@osmo-button-padding-sides * 0.75);
+		}
+		&[data-padding="very-tight"] {
+			.padding-sides(@osmo-button-padding-sides * 0.5);
+		}
+
+		border-radius: @border-radius;
+		font-weight: 600;
+
+		transition: transform @osmo-button-click-transition-time;
+	}
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: -1;
+		border-radius: @border-radius;
+
+		top: 0;
+		bottom: -@osmo-button-shadow-width;
+		left: 0;
+		right: 0;
+
+		transition: top @osmo-button-click-transition-time;
+	}
+
+	transition: transform @osmo-button-hover-transition-time;
+
+	user-select: none;
+
+	&[data-button="buy"] {
+		#osmo-button.primary(#ff8a33, #fff, #f77219);
+	}
+
+	&[data-button="buy-secondary"] {
+		#osmo-button.secondary(#ff8a33, #fff);
+	}
+
+	#osmo-button.on-click({
+		.osmo-button-inner {
+			transform: translate(0, @osmo-button-shadow-width);
+		}
+
+		&::before {
+			top: @osmo-button-shadow-width;
+		}
+	});
+
+	@media (hover: hover) {
+		#osmo-button.on-hover({
+			transform: scale(@osmo-button-grow-scale);
+		});
+	}
+}
+

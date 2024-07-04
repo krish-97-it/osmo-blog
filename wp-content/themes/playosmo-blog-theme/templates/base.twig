@@ -1,0 +1,41 @@
+{% block html_head_container %}
+  {% include 'html-header.twig' %}
+  {% block head %}
+  {% endblock %}
+  </head>
+{% endblock %}
+
+  <body class="{{body_class}}" data-template="base.twig">
+    {% if not user %}
+      {% include 'ga.twig' %}
+    {% endif %}
+
+    {% include 'header.twig' %}
+    <section id="content" role="main" class="content-wrapper">
+      {# Temporary disable categories for all except english #}
+      {% if lang == 'en' %}
+        {% include 'categories.twig' %}
+      {% endif %}
+      <div class="content-container container">
+        <div class="osmo-row" data-wrap="no-wrap">
+          <div class="content-main osmo-col">
+            {% block content %}
+              Sorry, no content
+            {% endblock %}
+          </div>
+          <div class="content-sidebar osmo-col">
+            {% include 'sidebar.twig' %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% block footer %}
+      <footer id="footer">
+        {% include 'footer.twig' %}
+      </footer>
+      {% include 'modal.twig' %}
+      {{ function('wp_footer') }}
+    {% endblock %}
+  </body>
+</html>

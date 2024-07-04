@@ -1,0 +1,10 @@
+<div class="sidebar">
+  {% include 'sidebar/search.twig' %}
+  {# {% include 'sidebar/products-by-learning-category.twig' %} #}
+  {% include 'sidebar/newsletter.twig' %}
+  {% if function('get_locale') not in ['fr_FR','de_DE'] %}
+    {% include 'sidebar/featured-products.twig' %}
+  {% endif %}
+  {% include 'sidebar/featured-posts.twig' %}
+  {% include 'sidebar/instagram.twig' %}
+</div>
